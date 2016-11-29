@@ -42,6 +42,13 @@ autoprefixer:
   - last 2 versions
 ```
 
+You can also specify that autoprefixer should only work in production mode:
+
+```
+autoprefixer:
+  only_production: true
+```
+
 # Contribute
 
 Fork this repository, make your changes and then issue a pull request. If you find bugs or have new ideas that you do not want to implement yourself, file a bug report.

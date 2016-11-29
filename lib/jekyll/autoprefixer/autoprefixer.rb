@@ -16,14 +16,16 @@ module Jekyll
       def process()
         options = @site.config['autoprefixer'] || {}
 
-        @batch.each do |item|
-          path = item.destination(@site.dest)
+        if !options['only_production'] || Jekyll.env == "production"
+          @batch.each do |item|
+            path = item.destination(@site.dest)
 
-          File.open(path, 'r+') do |file|
-            content = file.read
-            file.truncate(0)
-            file.rewind
-            file.write(AutoprefixerRails.process(content, options))
+            File.open(path, 'r+') do |file|
+              content = file.read
+              file.truncate(0)
+              file.rewind
+              file.write(AutoprefixerRails.process(content, options))
+            end
           end
         end
 
