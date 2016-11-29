@@ -21,5 +21,7 @@ Jekyll::Hooks.register :site, :post_render do |site|
 end
 
 Jekyll::Hooks.register :site, :post_write do |site|
-  site.autoprefixer.process
+  if Jekyll.env == "production"
+    site.autoprefixer.process
+  end
 end
