@@ -4,6 +4,13 @@
 
 This plugin provides simple autoprefixer support for Jekyll.
 
+## Prerequisites
+
+You need to have the [autoprefixer](https://www.npmjs.com/package/autoprefixer) package installed for this plugin to work.
+```
+npm i -D autoprefixer
+```
+
 ## Installation
 
 This plugin is available as a [RubyGem][ruby-gem].
