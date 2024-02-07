@@ -37,6 +37,7 @@ module Jekyll
 
         # Process all files that were regenerated during this Jekyll build
         @batch.each do |item|
+          next unless process_file?(item, options)
           path = item.destination(@site.dest)
           process_file(path, options, write_sourcemaps)
         end
@@ -45,6 +46,11 @@ module Jekyll
       end
 
       private
+
+      def process_file?(item, options)
+        return false if options['process_static_files'] == false && item.is_a?(Jekyll::StaticFile)
+        return true
+      end
 
       def process_file(path, options, write_sourcemaps)
         Jekyll.logger.debug 'Autoprefixer:', "Transforming CSS: #{path}"
