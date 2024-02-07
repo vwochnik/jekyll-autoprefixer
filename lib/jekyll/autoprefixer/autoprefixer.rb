@@ -48,7 +48,9 @@ module Jekyll
       private
 
       def process_file?(item, options)
+        return true if item.data['process_with_autoprefixer'] == true
         return false if options['process_static_files'] == false && item.is_a?(Jekyll::StaticFile)
+        return false if item.data['process_with_autoprefixer'] == false
         return true
       end
 
